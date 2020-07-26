@@ -37,7 +37,7 @@
     throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
   });
 
-  // Attempt to generate email
+  // Attempt script logic
   try
   {
     // // Set new memory limit Note: This will revert back to original limit upon end of script
@@ -50,10 +50,10 @@
     // Set local
     // setlocale(LC_ALL, "en_US.utf8");
 
-    // Include database class file
+    // Include class file
     include ("sftp_put_class.php");
 
-    // Create an object of database class
+    // Create an object of class
     $sftp_put_cl = new sftp_put_class();
 
     // Initialize variables

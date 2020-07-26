@@ -2,10 +2,10 @@
   /*
           File: sftp_put_config.php
        Created: 07/23/2020
-       Updated: 07/23/2020
+       Updated: 07/26/2020
     Programmer: Cuates
     Updated By: Cuates
-       Purpose: Sensitive Database information
+       Purpose: Sensitive information
   */
 
   // Can ONLY be inherited by another class
@@ -22,6 +22,7 @@
     protected $urlapi = NULL;
     protected $remotePath = NULL;
     protected $subscriptionKey = NULL;
+    protected $appKey = NULL;
 
     // PHP 5+ Style constructor
     public function __construct()
@@ -48,8 +49,8 @@
       // Check if server info does not consist of server type
       if(!preg_match("/\b[a-zA-Z0-9(\W)(\_)(\s)]{0,}" . implode('|', $ServerType) . "[a-zA-Z0-9(\W)(\_)(\s)]{0,}\b/i", $ServerInfo))
       {
-        // Set production database information
-        // Check if type is ms sql
+        // Set production information
+        // Check if type is given
         if($type === "<Database_Name>")
         {
           // Set variables
@@ -63,8 +64,9 @@
           $this->urlapi = "";
           $this->remotePath = "";
           $this->subscriptionKey = "";
+          $this->appKey = "";
         }
-        else if ($type === "SFTP")
+        else if ($type === "<SFTP_Name>")
         {
           // Set variables
           $this->driver = "";
@@ -77,6 +79,7 @@
           $this->urlapi = "";
           $this->remotePath = "<Directory_Path_In_SFTP_Server>";
           $this->subscriptionKey = "";
+          $this->appKey = "";
         }
         else
         {
@@ -91,12 +94,13 @@
           $this->urlapi = "";
           $this->remotePath = "";
           $this->subscriptionKey = "";
+          $this->appKey = "";
         }
       }
       else
       {
-        // Else set development database information
-        // Check if type is ms sql
+        // Set development information
+        // Check if type is given
         if($type === "<Database_Name>")
         {
           // Set variables
@@ -110,8 +114,9 @@
           $this->urlapi = "";
           $this->remotePath = "";
           $this->subscriptionKey = "";
+          $this->appKey = "";
         }
-        else if ($type === "SFTP")
+        else if ($type === "<SFTP_Name>")
         {
           // Set variables
           $this->driver = "";
@@ -124,6 +129,7 @@
           $this->urlapi = "";
           $this->remotePath = "<Directory_Path_In_SFTP_Server>";
           $this->subscriptionKey = "";
+          $this->appKey = "";
         }
         else
         {
@@ -138,6 +144,7 @@
           $this->urlapi = "";
           $this->remotePath = "";
           $this->subscriptionKey = "";
+          $this->appKey = "";
         }
       }
     }
@@ -146,7 +153,7 @@
     protected function getConfigVars()
     {
       // Return array of variables
-      return array("Driver" => $this->driver, "Servername" => $this->servername, "Port" => $this->port, "Database" => $this->database, "Username" => $this->username, "Password" => $this->password, "URL" => $this->url, "URLAPI" => $this->urlapi, "RemotePath" => $this->remotePath, "SubscriptionKey" => $this->subscriptionKey);
+      return array("Driver" => $this->driver, "Servername" => $this->servername, "Port" => $this->port, "Database" => $this->database, "Username" => $this->username, "Password" => $this->password, "URL" => $this->url, "URLAPI" => $this->urlapi, "RemotePath" => $this->remotePath, "SubscriptionKey" => $this->subscriptionKey, "AppKey" => $this->appKey);
     }
   }
 ?>
